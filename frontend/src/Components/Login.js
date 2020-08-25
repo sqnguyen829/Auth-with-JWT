@@ -8,25 +8,24 @@ function Login(props) {
   let loginHere = (e) => {
     e.preventDefault()
     
-    // fetch('http://localhost:3000/login',{
-    //   credentials: 'include',
-    //   method:'POST',
-    //   headers:{ 
-    //     'Content-Type': 'application/json',
-    //     'Accept': 'application/json'
-    //    },
-    //   body:JSON.stringify({
-    //     username:e.target.username.value,
-    //     password:e.target.password.value
-    //   })
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //   if(data.username){
-    //     props.setUser(data)
-    //     history.push('/loggedin')
-    //   }
-    // })
+    fetch('http://localhost:3000/login',{
+      method:'POST',
+      headers:{ 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
+      body:JSON.stringify({
+        username:e.target.username.value,
+        password:e.target.password.value
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.username){
+        props.setUser(data)
+        history.push('/loggedin')
+      }
+    })
   }
 
   return (
