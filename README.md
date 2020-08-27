@@ -16,3 +16,6 @@ add controllers
 
 rails g controller users
 
+after making the Auth controller build the login method along witht the route to access it
+
+

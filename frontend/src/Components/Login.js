@@ -12,7 +12,8 @@ function Login(props) {
       method:'POST',
       headers:{ 
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+
        },
       body:JSON.stringify({
         username:e.target.username.value,
@@ -21,9 +22,12 @@ function Login(props) {
     })
     .then(res => res.json())
     .then(data => {
-      if(data.username){
-        props.setUser(data)
+      let {success, id, token} = data
+      if(success){
+        // props.setUser(data)
         history.push('/loggedin')
+      } else{
+        console.log(success)
       }
     })
   }
