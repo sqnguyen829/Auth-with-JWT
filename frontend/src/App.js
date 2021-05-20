@@ -16,6 +16,7 @@ function App() {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      localStorage.getItem('token').clear()
       setUser({})
       history.push('/')
     })

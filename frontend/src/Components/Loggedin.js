@@ -8,14 +8,18 @@ function Loggedin(props) {
     useEffect(() => {
         //https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
         let isMounted = true // note this flag denote mount status
-
-        // fetch('http://localhost:3000/dogs')
-        // .then(res => res.json())
-        // .then(dogData => {
-        //     if(isMounted){
-        //         setDogs(dogData)
-        //     }
-        // })
+        const token = localStorage.getItem('token')
+        fetch('http://localhost:3000/dogs',{
+          headers: {
+            'Authorization': `Bearer ${token}`
+        }
+        })
+        .then(res => res.json())
+        .then(dogData => {
+            if(isMounted){
+                setDogs(dogData)
+            }
+        })
         return () => { isMounted = false } // use effect cleanup to set flag false, if unmounted
       },[])
 

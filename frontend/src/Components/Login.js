@@ -23,11 +23,10 @@ function Login(props) {
     .then(res => res.json())
     .then(data => {
       let {success, id, token} = data
+      debugger
       if(success){
-        // props.setUser(data)
-        history.push('/loggedin')
-      } else{
-        console.log(success)
+        localStorage.setItem('token', token)
+        history.push(`/users/${id}`)
       }
     })
   }
