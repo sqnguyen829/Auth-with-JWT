@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :dogs
   resources :users
   get('/currentuser', to: 'application#current_user')
+  post('/login', to: 'auth#login')
 end

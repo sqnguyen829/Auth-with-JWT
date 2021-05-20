@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
     skip_before_action :verify_authenticity_token
-    before_action :check_authentication
+    # before_action :check_authentication
 
     def react_app
       render :file => 'public/index.html'
